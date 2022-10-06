@@ -11,7 +11,7 @@
 
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <h1 class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none fs-4 ms-2 ">Ajouter un produit</h1>
-        <ul class="nav nav-pills">
+        <ul class="nav nav-pills me-2">
             <li><a class="nav-link active" href="index.php">Produit</a></li>
             <li><a class="nav-link" href="recap.php">Recap</a></li>
         </ul>
