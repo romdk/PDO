@@ -40,7 +40,7 @@
                         }
                         echo "<tr>",
                                 "<td colspan=4>Total général : </td>",
-                                "<td><strong>".number_format($totalGeneral, 2, ",", "&nbsp;")."&nbsp;€</strong></td>",
+                                "<td><strong>".number_format($totalGeneral, 2, ",",  "&nbsp;")."&nbsp;€</strong></td>",
                             "</tr>",            
                     "</tbody>",
                 "</table>";
