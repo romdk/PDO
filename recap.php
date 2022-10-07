@@ -36,6 +36,7 @@
                             "<th>Prix</th>",
                             "<th>Quantité</th>",
                             "<th>Total</th>",
+                            "<th></th>",
                         "</tr>",
                     "</thead>",
                     "<tbody>";
@@ -47,15 +48,17 @@
                                     "<td>".number_format($product['price'],2,",","&nbsp;")."&nbsp;€</td>",
                                     "<td>".$product['qtt']."</td>",
                                     "<td>".number_format($product['total'],2,",","&nbsp;")."&nbsp;€</td>",
+                                    "<td>"?><input class="btn btn-secondary" type="submit" name="submit" value="Supprimer le produit"><?php "</td>".
                                 "</tr>";
                             $totalGeneral += $product['total'];
                         }
                         echo "<tr>",
                                 "<td colspan=4>Total général : </td>",
                                 "<td><strong>".number_format($totalGeneral, 2, ",",  "&nbsp;")."&nbsp;€</strong></td>",
-                            "</tr>",            
-                    "</tbody>",
-                "</table>";
+                                "<td>"?><input class="btn btn-secondary" type="submit" name="submit" value="Supprimer tout"><?php "</td>".
+                            "</tr>";            
+                    "</tbody>";
+                    "</table>";
         }
     
     ?>   
