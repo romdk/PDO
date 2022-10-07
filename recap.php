@@ -47,9 +47,20 @@
                                     "<td>".$index."</td>",
                                     "<td>".$product['name']."</td>",
                                     "<td>".number_format($product['price'],2,",","&nbsp;")."&nbsp;€</td>",
-                                    "<td>".$product['qtt']."</td>",
-                                    "<td>".number_format($product['total'],2,",","&nbsp;")."&nbsp;€</td>",
-                                    "<td>" ?><a href="?id=<?php echo $index?>&supp=true"><input class="btn btn-secondary" type="submit" name="delete" value="Supprimer le produit"></a><?php "</td>".
+                                    "<td>"?><form action="traitement.php" method="POST">
+                                                <input class="btn btn-secondary" type="submit" name="decrease" value="-">
+                                                <?php echo $product['qtt']?>
+                                                <input class="btn btn-secondary" type="submit" name="increase" value="+">
+                                            </form>
+                                        <?php echo
+                                    "</td>",
+                                    "<td>".number_format($product['total'],2,",","&nbsp;")."&nbsp;€</td>",  
+                                    "<td>" ?><form action="recap.php" method="POST">
+                                                <input type="hidden" name="deleteProduct" value="<?php echo $index ?>">
+                                                <input class="btn btn-secondary" type="submit" name="delete" value="Supprimer le produit">
+                                            </form>
+                                        <?php 
+                                    "</td>".
                                 "</tr>";
                             $totalGeneral += $product['total'];
                         }
@@ -57,9 +68,9 @@
                                 "<td colspan=4>Total général : </td>",
                                 "<td><strong>".number_format($totalGeneral, 2, ",",  "&nbsp;")."&nbsp;€</strong></td>",
                                 "<td>"?><form action="traitement.php" method="POST">
-                                        <input type="hidden" name="destroySession" value="1">                             
-                                        <input class="btn btn-secondary" type="submit" name="delete" value="Supprimer tout">
-                                    </form>
+                                            <input type="hidden" name="destroySession" value="1">                             
+                                            <input class="btn btn-secondary" type="submit" name="delete" value="Supprimer tout">
+                                        </form>
                                     <?php
                                 "</td>";                                
                             "</tr>";            
