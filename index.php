@@ -26,7 +26,7 @@
         
     </header>
     <div >
-    <form action="traitement.php" method="post">
+    <form action="traitement.php?action=ajouterProduit" method="post">
         <p>
             <label class="input-group-text w-25 ms-4">
                 Nom du produit :

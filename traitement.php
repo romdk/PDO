@@ -1,47 +1,61 @@
 <?php
     session_start();
 
-    if(isset($_POST['submit'])){
+    $action = $_GET["action"];
+    $id = $_GET["id"];
 
-        $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
-        $price = filter_input(INPUT_POST,"price", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-        $qtt = filter_input(INPUT_POST, "qtt", FILTER_VALIDATE_INT);
+    switch($action) {
 
-        if($name && $price && $qtt){
+        case "ajouterProduit";
 
-            $product = [
-                "name" => $name,
-                "price" => $price,
-                "qtt" => $qtt,
-                "total" => $price*$qtt
-            ];
+        if(isset($_POST['submit'])){
 
-            $_SESSION['products'][] = $product;
+            $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
+            $price = filter_input(INPUT_POST,"price", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+            $qtt = filter_input(INPUT_POST, "qtt", FILTER_VALIDATE_INT);
+
+            if($name && $price && $qtt){
+
+                $product = [
+                    "name" => $name,
+                    "price" => $price,
+                    "qtt" => $qtt,
+                    "total" => $price*$qtt
+                ];
+
+                $_SESSION['products'][] = $product;
+            }
+            header("Location:index.php");
         }
+        break;
+
+        case "viderPanier";
+        unset($_SESSION['products']);
+        header("Location:recap.php");
+        break;
 
 
+   
 
-    }
-    // fonction supprimer produit
-    if(isset($_POST['deleteProduct']) and is_numeric($_POST['deleteProduct']))
-    {
-        $delete = $_POST['deleteProduct'];
-        $_SESSION = "DELETE FROM product where id = $delete";
-    }
+        case "supprimerProduit";
+        unset($_SESSION['products']);
+        header("Location:recap.php");
+        break;
 
+}
+ 
 
     // fonction supprimer tout
-    $destroySessionFlag = filter_input(INPUT_POST, 'destroySession');
-    if ($destroySessionFlag == 1)  {
-        session_destroy();
-    }
+    // $destroySessionFlag = filter_input(INPUT_POST, 'destroySession');
+    // if ($destroySessionFlag == 1)  {
+    //     unset($_SESSION);
+    // }
 
-    // fonction augmenter/diminuer quantité
-    if (isset($_POST['increase'])){
-        $_SESSION['qtt']++;
-     }elseif (isset($_POST['decrease'])){
-        $_SESSION['qtt']--;
-     }
+    // // fonction augmenter/diminuer quantité
+    // if (isset($_POST['increase'])){
+    //     $_SESSION['qtt']++;
+    //  }elseif (isset($_POST['decrease'])){
+    //     $_SESSION['qtt']--;
+    //  }
 
-    header("Location:index.php");
 ?>
