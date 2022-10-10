@@ -34,11 +34,21 @@
         header("Location:recap.php");
         break;
 
-
-   
-
         case "supprimerProduit";
-        unset($_SESSION['products']);
+        unset($_SESSION['products'][$id]);
+        header("Location:recap.php");
+        break;
+
+        case "upQtt";
+        $_SESSION['products'][$id]['qtt']++  ;
+        header("Location:recap.php");
+        break;
+
+        case "downQtt";
+        $_SESSION['products'][$id]['qtt']--;
+        if($_SESSION['products'][$id]['qtt']==0){
+            unset($_SESSION['products'][$id]);
+        }
         header("Location:recap.php");
         break;
 

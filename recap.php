@@ -43,17 +43,18 @@
                     "<tbody>";
                         $totalGeneral = 0;
                         foreach($_SESSION['products'] as $index => $product){
+                            $total = $product['price']*$product['qtt'];
                             echo "<tr>",
                                     "<td>".$index."</td>",
                                     "<td>".$product['name']."</td>",
                                     "<td>".number_format($product['price'],2,",","&nbsp;")."&nbsp;€</td>",
-                                    "<td><a class='btn btn-secondary' href='traitement.php?action=downQtt'>-</a>"
+                                    "<td><a class='btn btn-secondary btn-sm mx-2' href='traitement.php?action=downQtt&id=$index'>-</a>"
                                     .$product['qtt']."
-                                    <a class='btn btn-secondary' href='traitement.php?action=upQtt'>+</a></td>",
-                                    "<td>".number_format($product['total'],2,",","&nbsp;")."&nbsp;€</td>",  
+                                    <a class='btn btn-secondary btn-sm mx-2' href='traitement.php?action=upQtt&id=$index'>+</a></td>",
+                                    "<td>".number_format($total,2,",","&nbsp;")."&nbsp;€</td>",  
                                     "<td><a class='btn btn-secondary' href='traitement.php?action=supprimerProduit&id=$index'>supprimer</a></td>
                                     </tr>";
-                            $totalGeneral += $product['total'];
+                            $totalGeneral += $total;
                         }
                         echo "<tr>",
                                 "<td colspan=4>Total général : </td>",
