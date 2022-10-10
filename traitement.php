@@ -51,21 +51,5 @@
         }
         header("Location:recap.php");
         break;
-
-}
- 
-
-    // fonction supprimer tout
-    // $destroySessionFlag = filter_input(INPUT_POST, 'destroySession');
-    // if ($destroySessionFlag == 1)  {
-    //     unset($_SESSION);
-    // }
-
-    // // fonction augmenter/diminuer quantité
-    // if (isset($_POST['increase'])){
-    //     $_SESSION['qtt']++;
-    //  }elseif (isset($_POST['decrease'])){
-    //     $_SESSION['qtt']--;
-    //  }
-
+    }
 ?>
