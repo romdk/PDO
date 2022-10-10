@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include "fonctions.php";
 
     $action = $_GET["action"];
     $id = $_GET["id"];
@@ -25,17 +26,20 @@
 
                 $_SESSION['products'][] = $product;
             }
+            affMsgAjout();
             header("Location:index.php");
         }
         break;
 
         case "viderPanier";
         unset($_SESSION['products']);
+        affMsgViderPanier();
         header("Location:recap.php");
         break;
 
         case "supprimerProduit";
         unset($_SESSION['products'][$id]);
+        affMsgProduitSupp();
         header("Location:recap.php");
         break;
 
