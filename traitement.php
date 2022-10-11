@@ -3,7 +3,7 @@
     include "fonctions.php";
 
     $action = $_GET["action"];
-    $id = $_GET["id"];
+    $id = $_GET["id"];  
 
     switch($action) {
 
@@ -11,7 +11,7 @@
 
         if(isset($_POST['submit'])){
 
-            $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
+            $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
             $price = filter_input(INPUT_POST,"price", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
             $qtt = filter_input(INPUT_POST, "qtt", FILTER_VALIDATE_INT);
 
@@ -27,17 +27,19 @@
                 $_SESSION['products'][] = $product;
             }
             
+            header("Location:index.php");
+            
             if($price == 0){
                 affMsgErrPrix();
             }
-
-            if(empty($name) == TRUE ){
+            
+            elseif(empty($name) == TRUE ){
                 affMsgErrProduit();
             }
             else{
-                affMsgAjout();  
+                affMsgAjout($name);  
             }
-            header("Location:index.php");
+            
         }
         break;
 
@@ -48,8 +50,8 @@
         break;
 
         case "supprimerProduit";
-        unset($_SESSION['products'][$id]);
         affMsgProduitSupp();
+        unset($_SESSION['products'][$id]);
         header("Location:recap.php");
         break;
 

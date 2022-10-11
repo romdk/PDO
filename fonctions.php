@@ -13,6 +13,7 @@
 </html>
 <?php
 
+
     function affQtt(){
         $qtt = 0;
         foreach($_SESSION['products'] as $index => $product){
@@ -21,9 +22,10 @@
         return $qtt;
     }
 
-    function affMsgAjout(){
+    function affMsgAjout($name){
+        $id = $_GET["id"];
         unset($_SESSION['message']);
-       $_SESSION['message'] = "<div class='alert alert-primary' role='alert'>Produit ajouté au panier</div>";
+       $_SESSION['message'] = "<div class='alert alert-primary' role='alert'>".$name." a été ajouté au panier</div>";
        return $_SESSION['message'];
     };
 
@@ -34,8 +36,9 @@
     };
 
     function affMsgProduitSupp(){
+        $id = $_GET["id"];
         unset($_SESSION['message']);
-       $_SESSION['message'] = "<div class='alert alert-warning' role='alert'>Le produit à été retiré du panier</div>";
+       $_SESSION['message'] = "<div class='alert alert-warning' role='alert'>Le produit ".$_SESSION['products'][$id]['name']." a été retiré du panier</div>";
        return $_SESSION['message'];
     };
     function affMsgQttUp(){
