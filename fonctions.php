@@ -55,4 +55,10 @@
        $_SESSION['message'] = "<div class='alert alert-danger' role='alert'>Erreur! le prix doit être supérieur à 0</div>";
        return $_SESSION['message'];
     };
+
+    function affMsgErrProduit(){
+        unset($_SESSION['message']);
+       $_SESSION['message'] = "<div class='alert alert-danger' role='alert'>Erreur! Nom du produit incorrect</div>";
+       return $_SESSION['message'];
+    };
 ?>

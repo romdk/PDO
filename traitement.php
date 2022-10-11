@@ -26,9 +26,16 @@
 
                 $_SESSION['products'][] = $product;
             }
-            affMsgAjout();
+            
             if($price == 0){
                 affMsgErrPrix();
+            }
+
+            if(empty($name) == TRUE ){
+                affMsgErrProduit();
+            }
+            else{
+                affMsgAjout();  
             }
             header("Location:index.php");
         }
