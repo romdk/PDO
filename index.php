@@ -25,7 +25,7 @@
 </svg><?php if(isset($_SESSION['products'])){ echo affQtt();} else{echo "panier vide";}?></li>
         </ul>
     </header>
-    <div><?php echo $_SESSION['message'];?></div>
+    <div><?php if(isset($_SESSION['message'])){ echo $_SESSION['message'];}?></div>
     <div >
     <form action="traitement.php?action=ajouterProduit" method="post">
         <p>

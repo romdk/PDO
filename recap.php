@@ -23,7 +23,7 @@
 </svg><?php if(isset($_SESSION['products'])){ echo affQtt();} else{echo "panier vide";}?></li>
         </ul><br>
     </header>
-    <div><?php echo $_SESSION['message'];?></div>
+    <div><?php if(isset($_SESSION['message'])){ echo $_SESSION['message'];}?></div>
     <?php 
         if(!isset($_SESSION['products']) || empty($_SESSION['products'])) {
             echo "<p>Aucun produit en session...</P>";
