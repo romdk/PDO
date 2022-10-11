@@ -40,8 +40,4 @@
        $_SESSION['message'] = "<div class='alert alert-warning' role='alert'>Le produit ".$name." à été retiré du panier</div>";
        return $_SESSION['message'];
     };
-
-    // echo affMsgAjout();
-    // echo affMsgViderPanier();
-    // echo affMsgProduitSupp();
 ?>
