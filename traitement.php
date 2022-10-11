@@ -27,6 +27,9 @@
                 $_SESSION['products'][] = $product;
             }
             affMsgAjout();
+            if($price == 0){
+                affMsgErrPrix();
+            }
             header("Location:index.php");
         }
         break;
@@ -45,13 +48,16 @@
 
         case "upQtt";
         $_SESSION['products'][$id]['qtt']++  ;
+        affMsgQttUp();
         header("Location:recap.php");
         break;
 
         case "downQtt";
         $_SESSION['products'][$id]['qtt']--;
+        affMsgQttDown();
         if($_SESSION['products'][$id]['qtt']==0){
             unset($_SESSION['products'][$id]);
+            affMsgProduitSupp();
         }
         header("Location:recap.php");
         break;

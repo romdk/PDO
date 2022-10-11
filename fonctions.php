@@ -32,12 +32,27 @@
        $_SESSION['message'] = "<div class='alert alert-warning' role='alert'>Le panier a été supprimé</div>";
        return $_SESSION['message'];
     };
+
     function affMsgProduitSupp(){
         unset($_SESSION['message']);
-        foreach($_SESSION['products'] as $index => $product){
-            $name = $product['name'];
-        }
-       $_SESSION['message'] = "<div class='alert alert-warning' role='alert'>Le produit ".$name." à été retiré du panier</div>";
+       $_SESSION['message'] = "<div class='alert alert-warning' role='alert'>Le produit à été retiré du panier</div>";
+       return $_SESSION['message'];
+    };
+    function affMsgQttUp(){
+        unset($_SESSION['message']);
+       $_SESSION['message'] = "<div class='alert alert-success' role='alert'>Ajout quantité</div>";
+       return $_SESSION['message'];
+    };
+
+    function affMsgQttDown(){
+        unset($_SESSION['message']);
+       $_SESSION['message'] = "<div class='alert alert-success' role='alert'>Retrait quantité</div>";
+       return $_SESSION['message'];
+    };
+
+    function affMsgErrPrix(){
+        unset($_SESSION['message']);
+       $_SESSION['message'] = "<div class='alert alert-danger' role='alert'>Erreur! le prix doit être supérieur à 0</div>";
        return $_SESSION['message'];
     };
 ?>
