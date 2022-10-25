@@ -13,6 +13,7 @@ function connection(){
         \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8']
     );
 }
+// connection();
 
 // ----------------AFFICHER TOUT ---------------------
 function findAll($pdo){
@@ -24,6 +25,7 @@ function findAll($pdo){
         ?><p><?php echo $product['name']." ".$product['description']." ".$product['price']; ?></p><?php
     }    
 }
+// echo findAll($pdo);
 
 
 
@@ -37,6 +39,7 @@ function findOneById($pdo,$id){
         ?><p><?php echo $product['name']." ".$product['description']." ".$product['price']; ?></p><?php
     }    
 }
+// echo findOneById($pdo,$id=2);
 
 
 
@@ -46,4 +49,5 @@ function findOneById($pdo,$id){
                                     VALUES ('$name', '$descr', '$price')");
         $sqlQuery->execute();
     }
+    // insertProduct($pdo,$name="abricot",$descr="un lot de 4 abricots",$price=1.69);
 ?>
