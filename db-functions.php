@@ -19,11 +19,10 @@ function connection(){
 function findAll($pdo){
     $sqlQuery = $pdo->prepare("SELECT * FROM products");                
     $sqlQuery->execute();
+    global $products;
     $products = $sqlQuery->fetchAll(); 
     
-    foreach($products as $product){
-        ?><p><?php echo $product['name']." ".$product['description']." ".$product['price']; ?></p><?php
-    }    
+    
 }
 // echo findAll($pdo);
 
@@ -33,11 +32,8 @@ function findAll($pdo){
 function findOneById($pdo,$id){
     $sqlQuery = $pdo->prepare("SELECT * FROM products WHERE id = $id");
     $sqlQuery->execute();
-    $products = $sqlQuery->fetchAll();
-    
-    foreach($products as $product){
-        ?><p><?php echo $product['name']." ".$product['description']." ".$product['price']; ?></p><?php
-    }    
+    global $products;
+    $products = $sqlQuery->fetchAll();  
 }
 // echo findOneById($pdo,$id=2);
 
