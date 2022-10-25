@@ -17,7 +17,8 @@ connection();
 findAll($pdo);
 
 foreach($products as $product){
-    ?><p><?php echo "<a href=''>".$product['name']."</a><br><br>".$product['description']."<br><br>".$product['price']."<br><br><a href=''>Ajouter au painer</a><br><br>"; ?></p><?php
+    $id = $product['ID'];
+    ?><p><?php echo "<a href=product.php?id=$id>".$product['name']."</a><br>".$product['description']."<br>".$product['price']."&euro;<br><a href='traitement.php'>Ajouter au panier</a><br>"; ?></p><?php
 }      
 
 
