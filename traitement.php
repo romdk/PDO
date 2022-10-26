@@ -1,11 +1,32 @@
 <?php
     session_start();
     include "fonctions.php";
+    include 'db-functions.php';
+    connection();
 
     $action = $_GET["action"];
     $id = $_GET["id"];  
 
     switch($action) {
+
+        case "addProduct";
+        $product = findOneById($pdo,$id);
+        foreach($products as $product){
+            $name = $product['name'];
+            $price = $product['price'];
+            $qtt = 1;
+        
+        $product = [
+            "name" => $name,
+            "price" => $price,
+            "qtt" => $qtt,
+            "total" => $price*$qtt
+        ];
+
+        }
+        $_SESSION['products'][] = $product ;
+        header("Location:recap.php");
+        break;
 
         case "ajouterProduit";
 
