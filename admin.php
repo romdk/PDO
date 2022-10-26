@@ -27,7 +27,7 @@
     </header>
     <div><?php if(isset($_SESSION['message'])){ echo $_SESSION['message'];}?></div>
     <div >
-    <form action="traitement.php?action=ajouterProduit" method="post">
+    <form action="traitement.php?action=creerProduit" method="post">
         <p>
             <label class="input-group-text w-25 ms-4">
                 Nom du produit :
@@ -35,17 +35,23 @@
             </label>
         </p>
         <p>
+             <label class="input-group-text w-25 ms-4">
+                Description du produit :
+                <textarea class="form-control ms-4" type="text" name="description"></textarea>
+             </label>
+        </p> 
+        <p>
             <label class="input-group-text w-25 ms-4">
                 Prix du produit :
                 <input class="form-control ms-4" type="number" min=0  step="any" name="price">
             </label>
         </p>
-        <p>
+        <!-- <p>
             <label class="input-group-text w-25 ms-4">
                 Quantité désirée :
                 <input class="form-control ms-4" type="number" name="qtt" min=1  value="1">
             </label>
-        </p>
+        </p> -->
         <p>
             <input class="btn btn-primary ms-4   w-25" type="submit" name="submit" value="Ajouter le produit">
         </p>
