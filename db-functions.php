@@ -30,10 +30,11 @@ function findAll($pdo){
 
 // ----------------AFFICHER ELEMENT POSSEDANT ID SPECIFIQUE ---------------------
 function findOneById($pdo,$id){
-    $sqlQuery = $pdo->prepare("SELECT * FROM products WHERE id = $id");
+    $sqlQuery = $pdo->prepare("SELECT * FROM products WHERE id = :id");
+    $sqlQuery->bindValue(":id", $id);
     $sqlQuery->execute();
-    global $products;
-    $products = $sqlQuery->fetchAll();  
+    global $product;
+    $product = $sqlQuery->fetch();      
 }
 // echo findOneById($pdo,$id=2);
 
