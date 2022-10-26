@@ -28,6 +28,12 @@
        $_SESSION['message'] = "<div class='alert alert-primary' role='alert'>".$name." a été ajouté au panier</div>";
        return $_SESSION['message'];
     };
+    function affMsgCreer($name){
+        $id = $_GET["id"];
+        unset($_SESSION['message']);
+       $_SESSION['message'] = "<div class='alert alert-primary' role='alert'>Le produit ".$name." a été créer</div>";
+       return $_SESSION['message'];
+    };
 
     function affMsgViderPanier(){
         unset($_SESSION['message']);
