@@ -1,21 +1,22 @@
 <?php
     session_start();
+    // session_destroy();
     include "fonctions.php";
     include 'db-functions.php';
     connection();
 
     $action = $_GET["action"];
     $id = $_GET["id"];  
-
+    
     switch($action) {
-
+        
         case "ajouterPanier";
         
         findOneById($pdo,$id);
         $name = $product['name'];
         $price = $product['price'];
         $qtt = 1;
-        $id = $product['ID'];
+        // $id = $product['ID'];
         
         $product = [
             "name" => $name,
@@ -24,21 +25,23 @@
             "total" => $price*$qtt
         ];
 
-// echo ($_SESSION['products'][$id]['name']);
-// echo $name;
+        if(isset($_SESSION['products'])){
+                foreach($_SESSION['products'] as $index => $item ){
+                if($item['name'] == $name){
+                    return header("Location:traitement.php?action=upQtt&id=$index");
+                    affMsgQttUp();
+                    die;
+                }
+            }
 
-// foreach($_SESSION['products'] as ){
-if(empty($_SESSION['products'][$id]) || $_SESSION['products'][$id]['name'] !== $name){
-    $_SESSION['products'][] = $product ;
-    header("Location:index.php");
-    affMsgAjout($name);
-}
-if($_SESSION['products'][$id]['name'] == $name){
-    $_SESSION['products'][$id]['qtt']++  ;
-    header("Location:index.php");
-    affMsgQttUp();
-}
-// }    
+            $_SESSION['products'][] = $product ;
+            header("Location:index.php");
+            affMsgAjout($name);
+            
+        }
+        else {$_SESSION['products'][] = $product ;
+            header("Location:index.php");
+            affMsgAjout($name);}
 
         break;
 
@@ -96,8 +99,3 @@ if($_SESSION['products'][$id]['name'] == $name){
         header("Location:recap.php");
         break;
     }
-
-    // session_destroy();
-
-    
-?>
